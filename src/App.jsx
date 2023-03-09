@@ -85,7 +85,7 @@ function App() {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, quiero reiniciar',
+      confirmButtonText: 'Si, quiero reiniciar!',
       cancelButtonText: "Cancelar Cambios",
 
     }).then((result) => {
