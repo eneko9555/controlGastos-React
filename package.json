@@ -1,0 +1,26 @@
+{
+  "name": "controldegastos",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "prop-types": "^15.8.1",
+    "react": "^17.0.2",
+    "react-circular-progressbar": "^2.1.0",
+    "react-dom": "^17.0.2",
+    "react-swipeable-list": "^1.7.2",
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.7.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^1.0.7",
+    "standard": "^17.0.0",
+    "vite": "^4.1.4"
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/standard/eslintrc.json"
+  }
+}
