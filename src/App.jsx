@@ -26,6 +26,7 @@ function App() {
   const [filtroDinero, setFiltroDinero] = useState("")
   const [filtroDineroMaximo, setFiltroDineroMaximo] = useState("")
 
+  const [someFilter, setSomeFilter] = useState(false)
   const [gastosFiltrados, setGastosFiltrados] = useState([])
 
   useEffect(() => {
@@ -75,19 +76,20 @@ function App() {
   
 
   useEffect(() => {
-   
       const gastosFiltrados = listaGastos.filter(filtro1).filter(filtro2).filter(filtro3)
       setGastosFiltrados(gastosFiltrados)
-      console.log(gastosFiltrados);
-    
-    
   }, [filtro, filtroDinero, filtroDineroMaximo])
 
-
-
-
-
-
+  useEffect(() => {
+    if(filtro || filtroDinero || filtroDineroMaximo){
+      setSomeFilter(true)
+      return
+    }
+    if(!(filtro && filtroDinero && filtroDineroMaximo)){
+      setSomeFilter(false)
+      return
+    }
+  }, [filtro,filtroDinero, filtroDineroMaximo])
 
   const handleNuevoGasto = () => {
     setModal(true)
@@ -181,6 +183,8 @@ function App() {
                 filtro={filtro}
                 filtro2={filtro2}
                 gastosFiltrados={gastosFiltrados}
+                someFilter={someFilter}
+                
 
               />
             </main>

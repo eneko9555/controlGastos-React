@@ -1,12 +1,12 @@
 import Gasto from './Gasto'
 
-const ListadoGastos = ({ listaGastos, setEditar, eliminarGasto, filtro, gastosFiltrados, filtroDinero, filtroDineroMaximo }) => {
+const ListadoGastos = ({ listaGastos, setEditar, eliminarGasto, filtro, gastosFiltrados, filtroDinero, filtroDineroMaximo,someFilter  }) => {
   return (
     <div className='listado-gastos contenedor'>
 
 
       {
-        gastosFiltrados ? 
+        someFilter ? 
           <>
             <h2>{gastosFiltrados.length ? "Gastos"  : 'No hay gastos en esta categoría'}</h2>
             {gastosFiltrados.map(gasto =>
