@@ -23,6 +23,8 @@ function App() {
   const [editar, setEditar] = useState({})
 
   const [filtro, setFiltro] = useState("")
+  const [filtroDinero, setFiltroDinero] = useState("")
+  const [filtroDineroMaximo, setFiltroDineroMaximo] = useState("")
 
   const [gastosFiltrados, setGastosFiltrados] = useState([])
 
@@ -33,6 +35,13 @@ function App() {
   }, [editar])
 
   useEffect(() => {
+    if(localStorage.getItem('presupuesto')){
+      setIsValid(true)
+    }
+
+  }, [])
+
+  useEffect(() => {
     setEditar({})
   }, [modal])
 
@@ -40,12 +49,45 @@ function App() {
     localStorage.setItem('presupuesto', JSON.stringify(presupuesto))
   }, [presupuesto])
 
-  useEffect(() => {
-    if (filtro) {
-      const gastosFiltrados = listaGastos.filter(gst => gst.categoria === filtro)
-      setGastosFiltrados(gastosFiltrados)
+  const filtro1 = (gst) => {
+    if(filtro){
+      return gst.categoria === filtro
     }
-  }, [filtro])
+    return gst
+    
+  }
+  const filtro2 = (gst) => {
+
+    if(filtroDinero){
+      return gst.cantidad >= filtroDinero
+    }
+    return gst
+    
+  }
+  const filtro3 = (gst) => {
+
+    if(filtroDineroMaximo){
+      return gst.cantidad <= filtroDineroMaximo
+    }
+    return gst
+    
+  }
+  
+
+  useEffect(() => {
+   
+      const gastosFiltrados = listaGastos.filter(filtro1).filter(filtro2).filter(filtro3)
+      setGastosFiltrados(gastosFiltrados)
+      console.log(gastosFiltrados);
+    
+    
+  }, [filtro, filtroDinero, filtroDineroMaximo])
+
+
+
+
+
+
 
   const handleNuevoGasto = () => {
     setModal(true)
@@ -125,6 +167,10 @@ function App() {
               <Filtros
                 filtro={filtro}
                 setFiltro={setFiltro}
+                filtroDinero={filtroDinero}
+                setFiltroDinero={setFiltroDinero}
+                filtroDineroMaximo={filtroDineroMaximo}
+                setFiltroDineroMaximo={setFiltroDineroMaximo}
               />
               <ListadoGastos
                 listaGastos={listaGastos}
@@ -133,6 +179,7 @@ function App() {
                 setModal={setModal}
                 eliminarGasto={eliminarGasto}
                 filtro={filtro}
+                filtro2={filtro2}
                 gastosFiltrados={gastosFiltrados}
 
               />

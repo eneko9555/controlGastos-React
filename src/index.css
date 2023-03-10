@@ -152,7 +152,16 @@ header h1 {
     width: 90%;
     max-width: 80rem;
     margin: 0 auto;
+    display: block;
+   
 }
+
+.contenedor h2 {
+    color: var(--gris-oscuro);
+    font-weight: 900;
+    text-align: center;
+}
+
 .contenedor-presupuesto {
     margin-top: -5rem;
 
@@ -244,7 +253,11 @@ main {
     display: flex;
     align-items: center;
     gap: 2rem;
+    padding:20px ;
+   
+    
 }
+
 .filtros label {
     font-size: 3rem;
     font-weight: 900;
